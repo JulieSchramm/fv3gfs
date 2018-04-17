@@ -1,0 +1,41 @@
+#%Module######################################################################
+##
+##    NEMS FV3 Prerequisites: cheyenne
+
+proc ModulesHelp {} {
+  puts stderr "\tcit - loads modules required for building and running FV3 under NEMS on cheyenne"
+}
+
+module-whatis "loads NEMS FV3 prerequisites for cheyenne"
+
+# NOTE: the "module purge" and loading of the module command are
+# handled by the module-setup.sh (or .csh) script.
+
+##
+## load programming environment
+## this typically includes compiler, MPI and job scheduler
+##
+module load intel/17.0.1
+module load ncarenv
+module load ncarcompilers
+module load netcdf
+module load mpt
+#JLSmodule load esmf_libs
+#JLSmodule load esmf-7.0.0-ncdfio-mpi-O
+#setenv("ESMF_LIBDIR","/glade/u/apps/ch/opt/esmf/7.0.0-ncdfio-mpi/intel/16.0.3/lib/libO/Linux.intel.64.mpi.default")
+#setenv("ESMFMKFILE","/glade/u/apps/ch/opt/esmf/7.0.0-ncdfio-mpi/intel/16.0.3/lib/libO/Linux.intel.64.mpi.default/esmf.mk")
+#setenv("ESMF_LIBDIR","/glade/p/work/heinzell/fv3/esmf-7.1.0_bs52/intel-17.0.1/mpt-2.15f/lib/libO/Linux.intel.64.mpi.default")
+#setenv("ESMFMKFILE","/glade/p/work/heinzell/fv3/esmf-7.1.0_bs52/intel-17.0.1/mpt-2.15f/lib/libO/Linux.intel.64.mpi.default/esmf.mk")
+
+
+##
+## load nwprod libraries
+##
+module use -a /glade/p/ral/jnt/tools/nwprod/lib/modulefiles
+module load bacio/v2.0.1
+#module load sp/v2.0.2
+module load sp/v2.0.1
+module load ip/v2.0.0
+module load w3nco/v2.0.6
+module load w3emc/v2.0.5
+module load nemsio/v2.2.1
