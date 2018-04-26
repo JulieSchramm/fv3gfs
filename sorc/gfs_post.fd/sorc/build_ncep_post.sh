@@ -19,16 +19,16 @@ set -x
 mac=$(hostname | cut -c1-1)
 mac2=$(hostname | cut -c1-2)
 if [ $mac2 = tf ] ; then                       # For Theia
- machine=theia
- . /etc/profile
- . /etc/profile.d/modules.sh
+  machine=theia
+  . /etc/profile
+  . /etc/profile.d/modules.sh
 elif [ $mac2 = t1 -o  $mac2 = g1 ] ; then # For WCOSS
- machine=wcoss
- . /usrx/local/Modules/default/init/bash
+  machine=wcoss
+  . /usrx/local/Modules/default/init/bash
 elif [ $mac = l -o $mac = s ] ; then             #    wcoss_c (i.e. luna and surge)
- export machine=cray-intel
+  export machine=cray-intel
 elif [ $mac2 = ga ] ; then
-export machine=gaea
+  export machine=gaea
 
     unset _LMFILES_
     unset _LMFILES_000
@@ -39,11 +39,13 @@ export machine=gaea
     module use -a /opt/cray/pe/craype/default/modulefiles
     source /etc/opt/cray/pe/admin-pe/site-config
 
-export NCEPLIBS=/lustre/f1/pdata/ncep_shared/NCEPLIBS/lib
+  export NCEPLIBS=/lustre/f1/pdata/ncep_shared/NCEPLIBS/lib
 elif [ $mac = f  ] ; then             # Jet
-export NCEPLIBS=/mnt/lfs3/projects/hwrfv3/gwv/lj/lib
+  export NCEPLIBS=/mnt/lfs3/projects/hwrfv3/gwv/lj/lib
 #export NCEPLIBS=/lfs3/projects/hfv3gfs/gwv/lj/lib/
- export machine=jet
+  export machine=jet
+elif [ $mac2 = ch  ] ; then             # Cheyenne
+  export machine=cheyenne
 fi
 
 # Lin Gan modifiy to use NCO vertical structure prefix for NCO deployment - 20160131

@@ -1,0 +1,55 @@
+#%Module######################################################################
+#############################################################
+## Lin.Gan@noaa.gov
+## EMC
+## post v7.0.0 
+#############################################################
+proc ModulesHelp { } {
+puts stderr "Set environment veriables for post"
+puts stderr "This module initializes the users environment"
+puts stderr "to build the post for Cheyenne production.\n"
+}
+module-whatis "post"
+
+set ver v7.0.0
+
+# Loading Intel Compiler Suite
+module load ncarenv
+module load intel
+module load mpt
+module load ncarcompilers
+module load netcdf
+#module load netcdf/3.6.3    # This version on netcdf not available on cheyenne
+
+# Loding nceplibs modules
+module use -a /glade/p/ral/jnt/tools/nwprod.update2018/lib/modulefiles
+module load sigio/v2.0.1
+# module load jasper/v1.900.1  # Use standard version
+# module load png/v1.2.44      # Use standard version
+# module load z/v1.2.6         # Use standard version
+module load sfcio/v1.0.0
+module load nemsio/v2.2.2
+module load bacio/v2.0.1
+module load g2/v3.1.0
+module load xmlparse/v2.0.0
+module load gfsio/v1.1.0
+module load ip/v2.0.0
+module load sp/v2.0.2
+module load w3emc/v2.2.0
+module load w3nco/v2.0.6
+module load crtm/v2.0.6
+
+module load g2tmpl/v1.3.0
+
+setenv JASPER_LIB /usr/lib64/libjasper.la
+setenv PNG_LIB /usr/lib64/libpng.so
+setenv Z_LIB /usr/lib64/libz.so
+
+setenv WRFPATH /glade/p/ral/jnt/tools/nwprod.update2018/wrf_shared.v1.1.0
+setenv myFC mpif90 -f90=ifort
+setenv myFCFLAGS "-O3 -convert big_endian -traceback -g -fp-model source -qopenmp"
+#
+#setenv myFCFLAGS "-O0 -convert big_endian -fp-model source -openmp -g -check all -ftrapuv -fp-stack-check -fstack-protector -heap-arrays -recursive -traceback"
+
+setenv myCPP /lib/cpp 
+setenv myCPPFLAGS "-P"

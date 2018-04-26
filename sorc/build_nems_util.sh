@@ -8,7 +8,11 @@ cwd=`pwd`
 
 USE_PREINST_LIBS=${USE_PREINST_LIBS:-"true"}
 if [ $USE_PREINST_LIBS = true ]; then
-  export MOD_PATH=/scratch3/NCEPDEV/nwprod/lib/modulefiles
+  if [ $target = cheyenne ]; then
+    export MOD_PATH=/glade/p/ral/jnt/tools/nwprod/lib/modulefiles
+  else
+    export MOD_PATH=/scratch3/NCEPDEV/nwprod/lib/modulefiles
+  fi
   source ../modulefiles/module_nemsutil.$target             > /dev/null 2>&1
 else
   export MOD_PATH=${cwd}/lib/modulefiles

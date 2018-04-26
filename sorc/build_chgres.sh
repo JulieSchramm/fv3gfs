@@ -8,14 +8,18 @@ cwd=`pwd`
 
 USE_PREINST_LIBS=${USE_PREINST_LIBS:-"true"}
 if [ $USE_PREINST_LIBS = true ]; then
-  export MOD_PATH=/scratch3/NCEPDEV/nwprod/lib/modulefiles
-  source ../modulefiles/fv3gfs/global_chgres.$target             > /dev/null 2>&1
+  if [ $target = cheyenne ]; then
+    export MOD_PATH=/glade/p/ral/jnt/tools/nwprod.update2018/lib/modulefiles
+  else
+    export MOD_PATH=/scratch3/NCEPDEV/nwprod/lib/modulefiles
+  fi
+  source ../modulefiles/fv3gfs/global_chgres.$target
 else
   export MOD_PATH=${cwd}/lib/modulefiles
   if [ $target = wcoss_cray ]; then
-    source ../modulefiles/fv3gfs/global_chgres.${target}_userlib > /dev/null 2>&1
+    source ../modulefiles/fv3gfs/global_chgres.${target}_userlib
   else
-    source ../modulefiles/fv3gfs/global_chgres.$target           > /dev/null 2>&1
+    source ../modulefiles/fv3gfs/global_chgres.$target
   fi
 fi
 

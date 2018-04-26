@@ -26,7 +26,7 @@ CPP = $(myCPP) $(myCPPFLAGS)
 CPPFLAGS = -DLINUX 
 FREE     = -FR
 
-WRF_INC    = -I$(WRFPATH)/external/io_quilt -I$(WRFPATH)/frame
+WRF_INC    = -I$(WRFPATH)/external/io_int -I$(WRFPATH)/frame
 WRF_LIB    = $(WRFPATH)/main/libwrflib.a  \
              $(WRFPATH)/frame/pack_utils.o  \
              $(WRFPATH)/frame/module_internal_header_util.o \
